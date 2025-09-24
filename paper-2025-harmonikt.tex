@@ -8,6 +8,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{mytodonotes}
+\usepackage{cleveref}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -83,6 +84,7 @@ mirko.viroli@unibo.it}
 % }
 % }
 
+\newcommand{\approach}{\textsc{HarmoniKt}}
 
 \maketitle
 
@@ -107,7 +109,7 @@ A key and non-trivial issue lies in the integration of heterogeneous robot fleet
  which hinders interoperability and limits the potential of multi-brand deployments.
 
 In this work, 
- we introduce HarmoniKt, 
+ we introduce \approach{}, 
  an extensible middleware that addresses this challenge by introducing an abstraction layer 
  and providing a unified REST API for the control and management of heterogeneous robots. 
 % 
@@ -126,12 +128,106 @@ component, formatting, style, styling, insert
 \davide{ Page limit: 6}
 
 \section{Introduction}\label{sec:intro}
-\clearpage
+
+\paragraph{Context}
+In the era of Industry 4.0, 
+ the drive toward automation has intensified across manufacturing, 
+ logistics, and service domains. 
+% 
+Many enterprises are investing heavily in research and deployment of robotic systems 
+to take over repetitive tasks, reduce human exposure to hazardous environments, 
+ and improve throughput and consistency. 
+% 
+Warehouse operations are a quintessential example: 
+ major players like Amazon employ thousands of autonomous mobile robots to move inventory, 
+ reduce picking times, and eliminate manual transport in large-scale facilities.
+%
+At the same time, the robotics industry has matured: 
+ companies now produce platforms with increasing reliability, rich sensing suites, versatile locomotion, 
+ and capability to execute complex behaviors (navigation, manipulation, perception). 
+% 
+The promise is that robotic fleets will become standard building blocks of the modern smart factory.
+
+Yet, even with escalating investments and advancing robotics capabilities, 
+ several challenges remain before these systems can fully deliver on their potential at scale.
+
+\paragraph{Research Gap}
+\davide{
+    if too long, remove some examples and put them in the related works
+}
+One of the major nontrivial obstacles is integration of heterogeneous robot fleets. 
+%
+In practice, 
+ each manufacturer typically employs its own software stack, proprietary APIs, 
+ communication protocols, and control paradigms. 
+% 
+This heterogeneity makes combining robots from multiple vendors into a seamless, 
+ interoperable fleet extremely difficult, which in turn constrains system designers 
+ to single-vendor lock-in or expensive custom wrappers. 
+% 
+In the literature of robot fleet management, 
+ authors often note that much work focuses on task allocation, path planning, scheduling, 
+ but relatively less tackles the problem of unified access and control across diverse platforms. 
+
+Some middleware proposals have attempted to address interoperability in both industrial and academic contexts. 
+%
+For instance,
+ TalkRoBots~\cite{ayaida2022fi} introduces a unified communication approach that bridges ROS, proprietary robot frameworks, 
+ and IIoT devices in Industry 4.0 environments. 
+% 
+Zegarra et al.~\cite{cuadroszegarra2024jsan}, instead, propose an Internet of Robotic Things (IoRT) approach 
+ to unify communication among different robot operating systems, focusing primarily on network-level interoperability 
+ rather than providing unified control APIs. 
+% 
+The Pluggable Distributed Resource Allocator (PDRA)~\cite{rossi2020iros} presents a middleware layer that enables robots 
+ to share computational tasks by intercepting executor requests and routing them across the fleet 
+ to optimize energy consumption and latency. 
+% 
+While effective in distributed resource management, 
+PDRA primarily addresses compute-resource sharing rather than unified control of heterogeneous robotic hardware. 
+%
+Similarly, in mission coordination contexts, architectures such as MissionControl~\cite{rodrigues2022jss} 
+ support coalition formation among diverse robots, yet they still leave open the challenge of offering 
+ a standardized control API across vendor-specific stacks.
+%
+Moreover, the trade-off between abstraction overhead and performance (e.g., latency, throughput) 
+ is seldom thoroughly evaluated in real-world heterogeneous fleets.
+
+\paragraph{Contribution}
+In this work, 
+ we address precisely this gap by presenting \approach{}:
+ an extensible middleware for unifying access to heterogeneous robot fleets. 
+% 
+\approach{} introduces an abstraction layer over diverse robot APIs and control paradigms, 
+ exposing a common REST API for commanders or higher-level applications to issue motion commands, 
+ query status, and orchestrate task execution, regardless of robot make or model. 
+% 
+Our architecture is modular and pluggable, 
+ allowing future extensions to additional robot types and communication protocols with minimal effort.
+
+We validate \approach{} in a physical testbed combining Boston Dynamics Spot robots 
+ and MiR (Mobile Industrial Robots) platforms in an industrial-style environment. 
+% 
+We report on implementation challenges, integration strategies, and runtime behavior. 
+%
+Importantly, we include a comparative performance study: 
+ we measure access latency through \approach{} and compare it to direct native access to each robot, 
+ showing that the overhead introduced by our abstraction is limited and acceptable for practical deployments. 
+% 
+Thus, we demonstrate that unified robot management is feasible without significant performance compromise.
+
+\paragraph{Outline}
+The rest of the paper is organized as follows:
+ \Cref{sec:related} provides background and related works;
+ \Cref{sec:arc} introduces \approach{} disscussing both the high level architecture and the implementation;
+ \Cref{sec:eval} provides details on the real world evaluation;
+ \Cref{sec:impact} discusses possible impacts of \approach{};
+ and \Cref{sec:future} concludes the paper and outlines future research directions.
 
 \section{Background and Related Works}\label{sec:related}
 \newpage
 
-\section{HarmoniKt Middleware}\label{sec:arc}
+\section{\approach{} Middleware}\label{sec:arc}
 \subsection{Architecture}
 
 \subsection{Implementation}
@@ -142,9 +238,9 @@ component, formatting, style, styling, insert
 \section{Evaluation}\label{sec:eval}
 \clearpage
 
+\section{Opportunities and Challenges}\label{sec:impact}
+\newpage
 \section{Conclusions and future work}\label{sec:future}
-
-\nocite{*}
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEexample}
