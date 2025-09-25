@@ -287,6 +287,48 @@ This heterogeneity exemplifies the integration challenges faced in Industry 4.0,
  where companies seek to combine different robot types into a cohesive fleet 
  to maximize operational flexibility.
 
+\subsection{Microservices Architecture for IIoT Middlewares}
+In recent years, 
+ the microservices architectural style has become a dominant paradigm in modern software engineering 
+  due to its ability to support modularity, scalability, and maintainability. 
+%  
+Organizations are increasingly moving away from monolithic applications toward collections of independent services, 
+ each encapsulating a well-defined functionality.
+ %
+ A large-scale O'Reilly study of industry adoption reported that more than $60\%$ 
+  of surveyed organizations had already deployed microservices in production, 
+  and nearly one third were migrating most of their systems to this architectural 
+  style\footnote{\url{https://www.oreilly.com/radar/microservices-adoption-in-2020/}}. 
+%  
+More recent empirical studies confirm that microservices are valued for enabling scalability, 
+ independent deployment, and technological flexibility, although they introduce challenges related to 
+ testing, monitoring, and data consistency~\cite{nogueira2024icsm}.
+
+This trend is visible not only in robotics 
+ but across the Internet of Things (IoT) and Industrial IoT (IIoT) domains. 
+% 
+For instance, a recent microservice-based middleware for IIoT~\cite{venanzi2021globecom} demonstrates how 
+ sensor, device, and application modules can be composed as independent services interacting via RESTful APIs, 
+  achieving elasticity and modular updates without disrupting the system as a whole. 
+%  
+Although not explicitly designed for robotic control, 
+ this work illustrates the applicability and benefits of microservices in 
+  industrial-scale, heterogeneous environments, and strengthens the case 
+  for adopting a similar approach in robot middleware.
+
+In the robotics domain, modular approaches have also emerged. 
+%
+Some recent works on mobile robots propose microservice-based control architectures 
+ that decouple motion planning, perception, and safety modules into independent services, 
+ coordinated through well-defined interfaces~\cite{DBLP:journals/ras/SchrickHTK25}. 
+% 
+Similarly, Xia et al.~\cite{DBLP:journals/ras/XiaZWCL18} propose a microservice-based cloud robotics architecture, 
+ modularizing functionalities such as SLAM, navigation, and vision into containerized services,
+ and validate their design via experiments on real robots in intelligent spaces.
+% 
+These examples highlight how the microservices approach can provide the flexibility required 
+ to support interoperability and scalability in robotics and Industry 4.0 environments.
+
 \section{\approach{} Middleware}\label{sec:arc}
 \subsection{Architecture}
 
