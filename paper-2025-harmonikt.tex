@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{hyperref}
 \usepackage{mytodonotes}
 \usepackage{cleveref}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -228,7 +229,55 @@ The rest of the paper is organized as follows:
 
 \subsection{Case Study Platforms: Boston Dynamics Spot and MiR}
 
-\newpage
+To validate our middleware, 
+ we selected two complementary and representative robotic platforms (\Cref{fig:robots}), namely: 
+ the Boston Dynamics Spot quadruped\footnote{\url{https://bostondynamics.com/products/spot/}}
+ and the Mobile Industrial Robots (MiR) mobile base\footnote{\url{https://mobile-industrial-robots.com/}}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1\columnwidth]{images/robots.jpeg}
+    \caption{
+        TBD.
+    }
+    \label{fig:robots}
+\end{figure}
+
+Spot is a versatile quadruped robot designed for unstructured and dynamic environments. 
+%
+Its legged locomotion allows it to traverse stairs, rough terrain, 
+ and cluttered industrial facilities where wheeled platforms would struggle. 
+% 
+Equipped with a rich sensor suite including stereo cameras, IMUs, and optional LIDAR payloads, 
+ Spot can perform inspection, mapping, and payload-carrying tasks. 
+% 
+Its SDK (primarily Python-based) enables programmatic access to locomotion primitives, perception data, 
+ and autonomy modules, making it suitable for research and industrial deployment alike. 
+% 
+In Industry 4.0 scenarios, Spot is often used for safety inspections in hazardous areas, 
+ surveying environments with thermal or gas sensors, 
+ or assisting in monitoring tasks that are unsafe for humans.
+
+In contrast, the MiR family of robots represents one of the most widely adopted 
+ autonomous mobile robot (AMR) platforms in logistics and manufacturing.
+%
+MiR robots are wheeled, indoor-oriented AMRs specifically designed for material handling, warehouse logistics, 
+ and line-feeding tasks in production facilities. 
+% 
+They provide reliable obstacle avoidance, map-based navigation, 
+ and fleet management through proprietary software. 
+% 
+Unlike Spot, their strengths lie in efficiency, payload capacity, and integration 
+ with industrial workflows such as transporting carts and pallets.
+
+The combination of Spot and MiR provides a testbed with heterogeneous 
+ locomotion modalities, APIs, and use cases: 
+  a legged robot designed for unstructured inspection tasks, 
+  and a wheeled robot specialized for structured intralogistics. 
+%
+This heterogeneity exemplifies the integration challenges faced in Industry 4.0, 
+ where companies seek to combine different robot types into a cohesive fleet 
+ to maximize operational flexibility.
 
 \section{\approach{} Middleware}\label{sec:arc}
 \subsection{Architecture}
