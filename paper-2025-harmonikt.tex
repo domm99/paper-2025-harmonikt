@@ -400,15 +400,93 @@ Moreover, the trade-off between abstraction and performance is often underexplor
 These gaps motivate our contribution: 
  \approach{} addresses interoperability challenges by combining a microservices-based architecture 
   with unified REST APIs, thereby bridging the flexibility of academic proposals 
-  with the robustness and standardization efforts emerging from industry.
+   bwith the robustness and standardization efforts emerging from industry.
 
 \section{\approach{} Middleware}\label{sec:arc}
 \subsection{Architecture}
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1\columnwidth]{images/arc.pdf}
+    \caption{
+        TBD.
+    }
+    \label{fig:arc}
+\end{figure}
+
+\approach{} is designed around a distributed microservices architecture, 
+ following the principle of clear separation of concerns. 
+% 
+Each service encapsulates a well-defined responsibility, 
+ enabling independent deployment, failure isolation, and flexible scalability. 
+% 
+This design allows the middleware to accommodate heterogeneous robot platforms 
+ without requiring modifications to the overall system.
+
+At the core lies the \texttt{robot-service}, 
+ which functions as the orchestration hub. 
+% 
+It exposes a unified REST API to client applications 
+ and abstracts away the complexity of vendor-specific interfaces. 
+% 
+Robot-specific functionality is delegated to dedicated services: 
+ the \texttt{spot-service}, implemented in Python to leverage Boston Dynamics' official SDK, 
+ and the \texttt{mir-service}, developed in Kotlin to handle the Mobile Industrial Robots platform. 
+% 
+This polyglot design is a central feature of \approach{}: 
+ by allowing each service to be implemented in the language 
+ and ecosystem best suited to the corresponding robot or functionality,
+  the middleware can fully exploit vendor-provided SDKs and libraries 
+  while still exposing a uniform interface to external consumers. 
+%  
+This flexibility is not incidental but rather essential to achieving our objectives of 
+ extensibility, interoperability, and maintainability across heterogeneous robotic platforms.
+
+Additional services are also foreseen to provide shared functionality across the fleet. 
+%
+In particular, a \texttt{map-service} is planned to manage spatial data and navigation maps, 
+ enabling robots to access common localization and environment representations, 
+ while a \texttt{group-mission-service} is envisioned to coordinate multi-robot tasks, 
+ allowing heterogeneous agents to participate in collaborative missions. 
+% 
+Although these services have not yet been implemented, 
+ their design has been integrated into the overall architecture, 
+ ensuring that the system can be readily extended in future developments.
+
+This modular architecture makes \approach{} inherently extensible: 
+ integrating a new robot type requires deploying a new service that conforms to the established interface contracts, 
+ without modifying the rest of the platform. 
+% 
+The design therefore combines abstraction, extensibility, and interoperability, 
+ aligning with the requirements of Industry 4.0 environments where diverse robotic assets 
+ must be orchestrated under a unified framework.
+
 \subsection{Implementation}
-\clearpage
-.
-\newpage
+The middleware is implemented using a polyglot technology stack carefully selected to 
+ balance reliability, developer productivity, and integration with vendor tools. 
+% 
+The majority of services are developed in Kotlin using the Ktor framework, 
+ chosen for its concise syntax, type safety, and seamless integration with the JVM ecosystem. 
+% 
+The Spot integration service, however, is written in Python, reflecting the availability 
+ and maturity of Boston Dynamics' official SDK. 
+% 
+All inter-service communication is HTTP-based, ensuring language-agnostic interoperability.
+
+The system relies on several infrastructure components to achieve robustness and maintainability. 
+%
+Consul provides service discovery and health checks, 
+ enabling automatic registration and dynamic routing among services. 
+% 
+Docker and Docker Compose are used for containerization and orchestration, 
+ ensuring consistent deployments across environments and simplifying scaling. 
+% 
+A Caddy server acts as a reverse proxy and API gateway, 
+ handling request routing, TLS termination, and centralized access control. 
+% 
+Build and deployment pipelines are automated via Gradle with Kotlin DSL, GitHub Actions for CI/CD, 
+ and Renovate for dependency management, ensuring that the codebase remains secure and up to date.
+
 
 \section{Evaluation}\label{sec:eval}
 \clearpage
