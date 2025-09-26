@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{mytodonotes}
 \usepackage{cleveref}
+\usepackage[inline]{enumitem}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -181,29 +182,6 @@ Yet,
 % 
 Crucially, the trade-off between abstraction overhead 
  and performance is rarely validated on real heterogeneous fleets.
-% Some middleware proposals have attempted to address interoperability in both industrial and academic contexts. 
-% %
-% For instance,
-%  TalkRoBots~\cite{ayaida2022fi} introduces a unified communication approach that bridges ROS, proprietary robot frameworks, 
-%  and IIoT devices in Industry 4.0 environments. 
-% % 
-% Zegarra et al.~\cite{cuadroszegarra2024jsan}, instead, propose an Internet of Robotic Things (IoRT) approach 
-%  to unify communication among different robot operating systems, focusing primarily on network-level interoperability 
-%  rather than providing unified control APIs. 
-% % 
-% The Pluggable Distributed Resource Allocator (PDRA)~\cite{rossi2020iros} presents a middleware layer that enables robots 
-%  to share computational tasks by intercepting executor requests and routing them across the fleet 
-%  to optimize energy consumption and latency. 
-% % 
-% While effective in distributed resource management, 
-%  PDRA primarily addresses compute-resource sharing rather than unified control of heterogeneous robotic hardware. 
-% %
-% Similarly, in mission coordination contexts, architectures such as MissionControl~\cite{rodrigues2022jss} 
-%  support coalition formation among diverse robots, yet they still leave open the challenge of offering 
-%  a standardized control API across vendor-specific stacks.
-% %
-% Moreover, the trade-off between abstraction overhead and performance (e.g., latency, throughput) 
-%  is seldom thoroughly evaluated in real-world heterogeneous fleets.
 
 \subsection{Contribution}
 In this work, 
@@ -257,7 +235,9 @@ To validate our middleware,
     \centering
     \includegraphics[width=1\columnwidth]{images/robots.jpeg}
     \caption{
-        TBD.
+        Experimental setup at the BI-REX Competence Center in Bologna. 
+        The facility hosts a pilot production line with industrial machinery, 
+        a 5G edge-cloud infrastructure, and a heterogeneous fleet composed of Boston Dynamics Spot and MiR robots.
     }
     \label{fig:robots}
 \end{figure}
@@ -420,7 +400,10 @@ These gaps motivate our contribution:
     \centering
     \includegraphics[width=1\columnwidth]{images/arc.pdf}
     \caption{
-        TBD.
+        High-level architecture of HarmoniKt. 
+        The system follows a microservices design, 
+        where each service encapsulates a specific responsibility (e.g., robot integration, mission coordination),
+        while a unified REST API provides vendor-agnostic access to heterogeneous platforms.
     }
     \label{fig:arc}
 \end{figure}
@@ -505,7 +488,9 @@ Build and deployment pipelines are automated via Gradle with Kotlin DSL, GitHub 
     \centering
     \includegraphics[width=0.6\columnwidth]{images/latency.pdf}
     \caption{
-        TBD. (mocked chart)
+        Average query latency when accessing robots directly via their SDKs versus through HarmoniKt. 
+        Results show that the middleware introduces only negligible overhead, 
+        confirming the feasibility of unified fleet management without significant performance loss.
     }
     \label{fig:latency}
 \end{figure}
@@ -521,15 +506,17 @@ The facility integrates real machinery, an edge-cloud computing infrastructure,
  and a dedicated 5G network, thus providing a realistic testbed for Industry 4.0 scenarios.
 
 The evaluation focused on two main aspects: 
- (i) verifying the ability of HarmoniKt to support mission execution through its unified REST API, and 
- (ii) quantifying the latency overhead introduced by the middleware. 
+\begin{enumerate*}[label=(\roman*)]
+    \item verifying the ability of HarmoniKt to support mission execution through its unified REST API; and 
+    \item quantifying the latency overhead introduced by the middleware. 
+\end{enumerate*}
 % 
 For the first aspect, 
  we exploited \approach{}'s APIs to retrieve robot state information and to assign navigation missions. 
 % 
 Missions consisted of dispatching each robot to specific machinery within the pilot line, 
  where every machine was equipped with a fiducial marker recognizable by the robots' onboard cameras. 
-
+%
 For the second aspect, 
  we measured the response time of API queries both when accessing robots directly via their native SDKs 
  and when routing the same queries through HarmoniKt. 
