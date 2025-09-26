@@ -167,29 +167,43 @@ In the literature of robot fleet management,
  authors often note that much work focuses on task allocation, path planning, scheduling, 
  but relatively less tackles the problem of unified access and control across diverse platforms. 
 
-Some middleware proposals have attempted to address interoperability in both industrial and academic contexts. 
+Some middleware solutions have attempted to mitigate this. 
 %
-For instance,
- TalkRoBots~\cite{ayaida2022fi} introduces a unified communication approach that bridges ROS, proprietary robot frameworks, 
- and IIoT devices in Industry 4.0 environments. 
+TalkRoBots~\cite{ayaida2022fi} bridges ROS, proprietary frameworks, and IIoT devices; 
+ Zegarra et al.~\cite{cuadroszegarra2024jsan} propose an IoRT-based approach focusing on network-level interoperability; 
+ The Pluggable Distributed Resource Allocator (PDRA)~\cite{rossi2020iros} enables distributed compute-resource sharing; 
+ and MissionControl~\cite{rodrigues2022jss} supports multi-robot coalition formation. 
 % 
-Zegarra et al.~\cite{cuadroszegarra2024jsan}, instead, propose an Internet of Robotic Things (IoRT) approach 
- to unify communication among different robot operating systems, focusing primarily on network-level interoperability 
- rather than providing unified control APIs. 
+Yet,
+ these frameworks either target specific aspects, 
+ such as communication or resource allocation,
+ or remain limited in maturity and scale. 
 % 
-The Pluggable Distributed Resource Allocator (PDRA)~\cite{rossi2020iros} presents a middleware layer that enables robots 
- to share computational tasks by intercepting executor requests and routing them across the fleet 
- to optimize energy consumption and latency. 
-% 
-While effective in distributed resource management, 
-PDRA primarily addresses compute-resource sharing rather than unified control of heterogeneous robotic hardware. 
-%
-Similarly, in mission coordination contexts, architectures such as MissionControl~\cite{rodrigues2022jss} 
- support coalition formation among diverse robots, yet they still leave open the challenge of offering 
- a standardized control API across vendor-specific stacks.
-%
-Moreover, the trade-off between abstraction overhead and performance (e.g., latency, throughput) 
- is seldom thoroughly evaluated in real-world heterogeneous fleets.
+Crucially, the trade-off between abstraction overhead 
+ and performance is rarely validated on real heterogeneous fleets.
+% Some middleware proposals have attempted to address interoperability in both industrial and academic contexts. 
+% %
+% For instance,
+%  TalkRoBots~\cite{ayaida2022fi} introduces a unified communication approach that bridges ROS, proprietary robot frameworks, 
+%  and IIoT devices in Industry 4.0 environments. 
+% % 
+% Zegarra et al.~\cite{cuadroszegarra2024jsan}, instead, propose an Internet of Robotic Things (IoRT) approach 
+%  to unify communication among different robot operating systems, focusing primarily on network-level interoperability 
+%  rather than providing unified control APIs. 
+% % 
+% The Pluggable Distributed Resource Allocator (PDRA)~\cite{rossi2020iros} presents a middleware layer that enables robots 
+%  to share computational tasks by intercepting executor requests and routing them across the fleet 
+%  to optimize energy consumption and latency. 
+% % 
+% While effective in distributed resource management, 
+%  PDRA primarily addresses compute-resource sharing rather than unified control of heterogeneous robotic hardware. 
+% %
+% Similarly, in mission coordination contexts, architectures such as MissionControl~\cite{rodrigues2022jss} 
+%  support coalition formation among diverse robots, yet they still leave open the challenge of offering 
+%  a standardized control API across vendor-specific stacks.
+% %
+% Moreover, the trade-off between abstraction overhead and performance (e.g., latency, throughput) 
+%  is seldom thoroughly evaluated in real-world heterogeneous fleets.
 
 \subsection{Contribution}
 In this work, 
