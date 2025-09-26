@@ -486,7 +486,51 @@ Build and deployment pipelines are automated via Gradle with Kotlin DSL, GitHub 
 
 
 \section{Evaluation}\label{sec:eval}
-\clearpage
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{images/latency.pdf}
+    \caption{
+        TBD. (mocked chart)
+    }
+    \label{fig:latency}
+\end{figure}
+
+To assess the feasibility and performance of \approach{}, 
+ we conducted an experimental evaluation using two heterogeneous robots: 
+ the Boston Dynamics Spot quadruped and a MiR autonomous mobile robot. 
+% 
+Both platforms were deployed at the BI-REX Competence Center in Bologna, 
+ which hosts a pilot production line replicating industrial conditions. 
+% 
+The facility integrates real machinery, an edge-cloud computing infrastructure, 
+ and a dedicated 5G network, thus providing a realistic testbed for Industry 4.0 scenarios.
+
+The evaluation focused on two main aspects: 
+ (i) verifying the ability of HarmoniKt to support mission execution through its unified REST API, and 
+ (ii) quantifying the latency overhead introduced by the middleware. 
+% 
+For the first aspect, 
+ we exploited \approach{}'s APIs to retrieve robot state information and to assign navigation missions. 
+% 
+Missions consisted of dispatching each robot to specific machinery within the pilot line, 
+ where every machine was equipped with a fiducial marker recognizable by the robots' onboard cameras. 
+
+For the second aspect, 
+ we measured the response time of API queries both when accessing robots directly via their native SDKs 
+ and when routing the same queries through HarmoniKt. 
+%  
+Measurements included status polling as well as mission dispatch requests. 
+%
+The results (\Cref{fig:latency}) show that the middleware introduces only a negligible increase in latency compared to direct access. 
+%
+In particular, 
+ the additional overhead remained consistently small across repeated trials 
+ and did not affect the ability of robots to execute time-sensitive navigation tasks.
+
+Overall, 
+ these findings demonstrate that HarmoniKt can successfully abstract heterogeneous robotic platforms 
+ in a realistic Industry 4.0 environment while preserving low latency and practical responsiveness. 
 
 \section{Opportunities and Challenges}\label{sec:impact}
 
