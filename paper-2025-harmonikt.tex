@@ -573,6 +573,31 @@ While technical hurdles such as unified mapping remain,
 
 \section{Conclusions and future work}\label{sec:future}
 
+This paper presented \approach{}, 
+ a polyglot middleware that leverages a microservices architecture to provide a unified REST API 
+ for heterogeneous robotic fleets. 
+% 
+Tested with Boston Dynamics Spot and MiR robots in an industrial-like environment, 
+ \approach{} demonstrated that vendor-agnostic interoperability can be achieved 
+ without significant latency overhead compared to direct access, 
+ confirming the practicality of our abstraction layer.
+
+Future works includes the extension of the middleware with a map-service 
+ for unified spatial representations and a group-mission-service for swarm-level coordination. 
+% 
+These additions will not only enhance the platform's capabilities 
+ but also open avenues for research on multi-agent reinforcement learning, aggregate computing, 
+ and edge-cloud task allocation in real robotic deployments. 
+% 
+Furthermore, the unified API creates opportunities for integrating LLM-based natural language interfaces, 
+ lowering the barrier for human-fleet interaction.
+
+By releasing HarmoniKt as open source, 
+ we aim to foster collaboration between academia and industry, 
+ providing both a practical tool and a research testbed 
+ to advance interoperable and scalable robotics in Industry 4.0.
+
+
 \section*{Acknowledgment}
 We would like to thank the BI-REX Competence Center for providing access to their robot fleet and 
  laboratory facilities, which enabled us to test the middleware in a real-world environment closely 
