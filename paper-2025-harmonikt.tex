@@ -492,7 +492,88 @@ Build and deployment pipelines are automated via Gradle with Kotlin DSL, GitHub 
 \clearpage
 
 \section{Opportunities and Challenges}\label{sec:impact}
-\newpage
+
+While \approach{} already demonstrates the feasibility of unifying 
+ heterogeneous robots under a common abstraction, 
+ several challenges and opportunities emerge from its current design and envisioned extensions.
+
+A central challenge lies in the realization of the \texttt{map-service}, 
+ which is intended to provide a unified spatial representation accessible to all robots in the fleet. 
+% 
+Designing such a service requires careful engineering to integrate diverse mapping formats 
+ and localization methods across vendors, while ensuring consistency, scalability, and extensibility. 
+% 
+Achieving this goal would enable seamless coordination among heterogeneous agents 
+ but entails significant complexity in data fusion and synchronization.
+
+In contrast, 
+ the planned \texttt{group-mission-service} opens a wide avenue for future developments. 
+% 
+By exposing a unified API for multi-robot coordination, 
+ this service could enable high-level orchestration at the swarm level. 
+% 
+The field of swarm robotics~\cite{brambilla2013swarm} has grown rapidly in recent years, 
+ fueled both by advances in artificial intelligence and by novel programming paradigms. 
+% 
+On the AI side, 
+ breakthroughs in multi-agent reinforcement learning (MARL)~\cite{DBLP:journals/tsmc/BusoniuBS08,malucelli2025sac} 
+ allow robot collectives to acquire complex cooperative behaviors 
+ through trial-and-error interactions with the environment. 
+% 
+Preliminary studies have also compared learning-based methods with more traditional control approaches 
+ such as PID controllers for autonomous vehicle coordination~\cite{DBLP:conf/smartcomp/BravettiBTAOG25}, 
+ raising the need for real-world validation beyond simulation. 
+% 
+\approach{}, by providing unified access to diverse physical robots, 
+ offers a unique testbed where such comparisons can be performed under realistic conditions.
+
+Beyond learning-based approaches, 
+ recent research has also explored macroprogramming paradigms, 
+ notably aggregate computing (AC)~\cite{beal2015computer,cortecchia2024acsossymp}, 
+ which shift the programming abstraction from individual robots to the collective. 
+% 
+These paradigms have already proven effective in developing coordination logic for large-scale IoT 
+ and complex systems~\cite{cortecchia2024acsos},
+ showing strong potential for swarm robotics~\cite{aguzzi2025lmcs,DBLP:conf/coordination/AguzziBBCCDFPV25}. 
+% 
+Moreover, they can be naturally integrated with AI-based techniques, 
+ combining the scalability of collective abstractions with the adaptiveness 
+ of machine learning~\cite{domini2024scp}. 
+% 
+\approach{} could play a pivotal role as an enabling platform for experimenting with these hybrid approaches.
+
+Another promising direction stems from the broader edge-cloud continuum. 
+%
+In modern industrial environments, 
+ computational resources are distributed across centralized servers and edge devices. 
+% 
+This opens the opportunity for dynamic task allocation strategies that optimize 
+ energy consumption, robot battery life, or latency 
+ of mission-critical tasks~\cite{domini2024woa}. 
+% 
+While much of the existing research in this space has been validated primarily in simulation, 
+ \approach{} provides a concrete environment to test such strategies in the field, 
+ thereby advancing their maturity.
+
+Finally, emerging efforts in human-robot interaction point to the use of large language models (LLMs) 
+ as natural interfaces for commanding robot fleets~\cite{olaiya2025natural,aguzzi2025language}. 
+% 
+By leveraging natural language, operators could issue high-level instructions without requiring 
+ detailed programming or vendor-specific knowledge. 
+% 
+Since \approach{} already abstracts vendor APIs into a unified interface, 
+ it could serve as the foundation for integrating LLM-based frontends, 
+ effectively bridging human operators and heterogeneous fleets in an intuitive and scalable manner.
+
+In summary, \approach{} not only addresses current interoperability challenges 
+ but also paves the way for novel research directions at the intersection of 
+ swarm robotics, artificial intelligence, distributed systems, and human-robot interaction. 
+% 
+While technical hurdles such as unified mapping remain, 
+ the platform's extensibility and real-world grounding create unique opportunities 
+ for advancing both academic research and industrial practice.
+
+
 \section{Conclusions and future work}\label{sec:future}
 
 \section*{Acknowledgment}
