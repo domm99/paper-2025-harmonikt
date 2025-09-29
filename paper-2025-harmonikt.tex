@@ -242,32 +242,27 @@ To validate our middleware,
     \label{fig:robots}
 \end{figure}
 
-Spot is a versatile quadruped robot designed for unstructured and dynamic environments. 
+Spot is a quadruped robot built for unstructured and dynamic environments.
 %
-Its legged locomotion allows it to traverse stairs, rough terrain, 
- and cluttered industrial facilities where wheeled platforms would struggle. 
-% 
-Equipped with a rich sensor suite including stereo cameras, IMUs, and optional LIDAR payloads, 
- Spot can perform inspection, mapping, and payload-carrying tasks. 
-% 
-Its SDK (primarily Python-based) enables programmatic access to locomotion primitives, perception data, 
- and autonomy modules, making it suitable for research and industrial deployment alike. 
-% 
-In Industry 4.0 scenarios, Spot is often used for safety inspections in hazardous areas, 
- surveying environments with thermal or gas sensors, 
- or assisting in monitoring tasks that are unsafe for humans.
+Its legged design enables stair climbing and traversal of rough or cluttered terrain, 
+ where wheeled robots struggle.
+%
+With sensors like stereo cameras, IMUs, and optional LIDAR, 
+ it supports inspection, mapping, and light payload tasks.
+%
+The Python-based SDK provides access to locomotion, perception, and autonomy modules, 
+ making Spot useful in both research and industry.
+%
+In Industry 4.0, Spot is applied to safety inspections, environmental surveys with thermal or gas sensors, 
+ and monitoring in hazardous areas.
 
-In contrast, the MiR family of robots represents one of the most widely adopted 
- autonomous mobile robot (AMR) platforms in logistics and manufacturing.
+By contrast, the MiR family consists of wheeled AMRs for indoor logistics.
 %
-MiR robots are wheeled, indoor-oriented AMRs specifically designed for material handling, warehouse logistics, 
- and line-feeding tasks in production facilities. 
-% 
-They provide reliable obstacle avoidance, map-based navigation, 
- and fleet management through proprietary software. 
-% 
-Unlike Spot, their strengths lie in efficiency, payload capacity, and integration 
- with industrial workflows such as transporting carts and pallets.
+They excel in material handling, warehouse transport, and line feeding, 
+ with map-based navigation, obstacle avoidance, and fleet management software.
+%
+Their strength lies in efficiency, payload capacity,
+ and workflow integration rather than unstructured exploration.
 
 The combination of Spot and MiR provides a testbed with heterogeneous 
  locomotion modalities, APIs, and use cases: 
@@ -279,46 +274,40 @@ This heterogeneity exemplifies the integration challenges faced in Industry 4.0,
  to maximize operational flexibility.
 
 \subsection{Microservices Architecture for IIoT Middlewares}
-In recent years, 
- the microservices architectural style has become a dominant paradigm in modern software engineering 
-  due to its ability to support modularity, scalability, and maintainability. 
-%  
-Organizations are increasingly moving away from monolithic applications toward collections of independent services, 
- each encapsulating a well-defined functionality.
- %
- A large-scale O'Reilly study of industry adoption reported that more than $60\%$ 
-  of surveyed organizations had already deployed microservices in production, 
-  and nearly one third were migrating most of their systems to this architectural 
-  style\footnote{\url{https://www.oreilly.com/radar/microservices-adoption-in-2020/}}. 
-%  
-More recent empirical studies confirm that microservices are valued for enabling scalability, 
- independent deployment, and technological flexibility, although they introduce challenges related to 
- testing, monitoring, and data consistency~\cite{nogueira2024icsm}.
 
-This trend is visible not only in robotics 
- but across the Internet of Things (IoT) and Industrial IoT (IIoT) domains. 
-% 
-For instance, a recent microservice-based middleware for IIoT~\cite{venanzi2021globecom} demonstrates how 
- sensor, device, and application modules can be composed as independent services interacting via RESTful APIs, 
-  achieving elasticity and modular updates without disrupting the system as a whole. 
-%  
-Although not explicitly designed for robotic control, 
- this work illustrates the applicability and benefits of microservices in 
-  industrial-scale, heterogeneous environments, and strengthens the case 
-  for adopting a similar approach in robot middleware.
-
-In the robotics domain, modular approaches have also emerged. 
+In recent years,
+ the microservices paradigm has become a leading software architectural style, 
+ valued for modularity, scalability, and maintainability.
 %
-Some recent works on mobile robots propose microservice-based control architectures 
- that decouple motion planning, perception, and safety modules into independent services, 
- coordinated through well-defined interfaces~\cite{DBLP:journals/ras/SchrickHTK25}. 
+Organizations increasingly replace monolithic applications with independent services, 
+ each encapsulating specific functionality.
+%
+An O'Reilly survey reported that over $60\%$ of companies already deploy microservices in production, 
+ with one third migrating most systems\footnote{\url{https://www.oreilly.com/radar/microservices-adoption-in-2020/}}.
+%
+Empirical studies confirm their benefits in scalability, 
+ deployment independence, and technological flexibility, while noting challenges in testing, 
+ monitoring, and data consistency~\cite{nogueira2024icsm}.
+
+This shift extends beyond robotics into IoT and IIoT.
+%
+For example, 
+ a recent IIoT middleware~\cite{venanzi2021globecom} composes sensor, device, 
+ and application modules as independent services connected via RESTful APIs, 
+ enabling elasticity and seamless updates.
+%
+Although not designed for robotic control, 
+ it demonstrates the applicability of microservices in large-scale, heterogeneous environments.
+
+In robotics, modular control architectures based on microservices have also been proposed, 
+ decoupling planning, perception, and safety into independently 
+ deployed services~\cite{DBLP:journals/ras/SchrickHTK25}.
+%
+Similarly, Xia et al.~\cite{DBLP:journals/ras/XiaZWCL18} present a cloud robotics framework where SLAM, 
+ navigation, and vision are containerized, validated through real-robot experiments.
 % 
-Similarly, Xia et al.~\cite{DBLP:journals/ras/XiaZWCL18} propose a microservice-based cloud robotics architecture, 
- modularizing functionalities such as SLAM, navigation, and vision into containerized services,
- and validate their design via experiments on real robots in intelligent spaces.
-% 
-These examples highlight how the microservices approach can provide the flexibility required 
- to support interoperability and scalability in robotics and Industry 4.0 environments.
+These examples highlight how microservices foster flexibility, interoperability, 
+ and scalability in robotics and Industry~4.0.
 
 \subsection{Related Works}
 The problem of integrating heterogeneous robot fleets has been addressed 
