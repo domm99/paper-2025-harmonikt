@@ -317,55 +317,63 @@ The problem of integrating heterogeneous robot fleets has been addressed
 Foundational frameworks such as Player/Stage~\cite{vaughan2003player} 
  and MIRO~\cite{DBLP:journals/trob/UtzSEK02} demonstrated the importance 
  of hardware abstraction and standardized communication. 
-% 
-In particular, Player offered a device server model where heterogeneous robots could be accessed via uniform interfaces, 
+%
+In particular, 
+ Player offered a device server model where heterogeneous robots could be accessed via uniform interfaces, 
  while Stage provided multi-robot simulation capabilities. 
-% 
+%
+In parallel, Aseba~\cite{magnenat2007aseba} introduced an event-based middleware 
+ explicitly designed for distributed control of heterogeneous robots, 
+ while surveys such as Kramer and Scheutz~\cite{DBLP:journals/arobots/KramerS07} 
+ catalogued the broader landscape of robot development environments.
+%
 These frameworks established the principles of separating robot hardware details from higher-level applications, 
  though their focus was largely on academic and simulation contexts.
 
 \paragraph{ROS and Component-Based Platforms} 
 The Robot Operating System (ROS)~\cite{quigley2009ros} has become the de facto standard in academia, 
  providing a publish/subscribe architecture and modular drivers. 
-% 
+%
 While ROS facilitates code reuse and integration, it was not originally designed for large heterogeneous fleets, 
  and multi-robot deployments often require complex configurations. 
-% 
-Other component-oriented middleware such as RT-Middleware~\cite{DBLP:conf/iros/AndoSKKY05} 
- and OPRoS~\cite{jang2010opros} introduced standardized service/component models 
- to promote interoperability, though adoption has been limited.
+%
+Other component-oriented middleware such as RT-Middleware~\cite{DBLP:conf/iros/AndoSKKY05}, 
+ OPRoS~\cite{jang2010opros}, and Orca~\cite{makarenko2006orca} introduced standardized service/component models 
+ to promote interoperability and extensibility, 
+ though their adoption has been uneven.
 
 \paragraph{Fleet Management Systems} 
 Recent work has turned toward full fleet management solutions. 
 %
 The Open-RMF framework\footnote{\url{https://www.open-rmf.org/}} is an open-source platform 
  enabling interoperability among different mobile robot fleets and shared infrastructure (e.g., elevators, doors). 
-% 
+%
 Field deployments, such as at Tartu University Hospital, have demonstrated its ability 
  to manage heterogeneous AMRs in real-world settings. 
-% 
+%
 Industry standards like VDA 5050~\cite{franke2023identification} 
  and OPC UA Robotics Companion Specification~\cite{DBLP:conf/etfa/ProfanterB0K19} 
  aim to unify communication between fleet management systems and robots, 
  particularly in logistics and manufacturing domains. 
-%  
-These initiatives illustrate the industrial push toward vendor-agnostic fleet orchestration.
+%
+These efforts collectively illustrate the long-standing push toward vendor-agnostic orchestration.
 
 \paragraph{Recent Middleware Proposals} 
 In academic contexts, Ayaida et al. introduced TalkRoBots~\cite{ayaida2022fi}, 
- a middleware bridging ROS and proprietary systems to enable communication 
- across heterogeneous robots in Industry 4.0 scenarios. 
-% 
+a middleware bridging ROS and proprietary systems to enable communication 
+across heterogeneous robots in Industry 4.0 scenarios. 
+%
 Similarly, Zegarra et al.~\cite{cuadroszegarra2024jsan} proposed an IoRT-based middleware 
- to unify communication at the network level among different robot operating systems. 
-% 
+to unify communication at the network level among different robot operating systems. 
+%
 On the other hand, resource allocation approaches such as PDRA~\cite{DBLP:conf/iros/RossiVNSH20} 
- focus on distributed compute sharing among robots, 
- while architectures like MissionControl~\cite{DBLP:journals/jss/RodriguesCAMRP22} 
-  target multi-robot coalition formation and mission assignment. 
-%  
-These works contribute to interoperability or coordination but often lack the comprehensive abstraction 
- and unified API layer required for seamless fleet integration.
+focus on distributed compute sharing among robots, 
+while architectures like MissionControl~\cite{DBLP:journals/jss/RodriguesCAMRP22} 
+target multi-robot coalition formation and mission assignment. 
+%
+These works contribute to interoperability or coordination 
+but often lack the comprehensive abstraction 
+and unified API layer required for seamless fleet integration.
 
 \subsection{Motivation}
 The survey of existing frameworks shows that, 
