@@ -397,7 +397,7 @@ These gaps motivate our contribution:
     \centering
     \includegraphics[width=1\columnwidth]{images/arc.pdf}
     \caption{
-        High-level architecture of HarmoniKt. 
+        High-level architecture of \approach{}. 
         The system follows a microservices design, 
         where each service encapsulates a specific responsibility (e.g., robot integration, mission coordination),
         while a unified REST API provides vendor-agnostic access to heterogeneous platforms.
@@ -485,7 +485,7 @@ Build and deployment pipelines are automated via Gradle with Kotlin DSL, GitHub 
     \centering
     \includegraphics[width=0.6\columnwidth]{images/latency.pdf}
     \caption{
-        Average query latency when accessing robots directly via their SDKs versus through HarmoniKt. 
+        Average query latency when accessing robots directly via their SDKs versus through \approach{}. 
         Results show that the middleware introduces only negligible overhead, 
         confirming the feasibility of unified fleet management without significant performance loss.
     }
@@ -504,7 +504,7 @@ The facility integrates real machinery, an edge-cloud computing infrastructure,
 
 The evaluation focused on two main aspects: 
 \begin{enumerate*}[label=(\roman*)]
-    \item verifying the ability of HarmoniKt to support mission execution through its unified REST API; and 
+    \item verifying the ability of \approach{} to support mission execution through its unified REST API; and 
     \item quantifying the latency overhead introduced by the middleware. 
 \end{enumerate*}
 % 
@@ -516,7 +516,7 @@ Missions consisted of dispatching each robot to specific machinery within the pi
 %
 For the second aspect, 
  we measured the response time of API queries both when accessing robots directly via their native SDKs 
- and when routing the same queries through HarmoniKt. 
+ and when routing the same queries through \approach{}. 
 %  
 Measurements included status polling as well as mission dispatch requests. 
 %
@@ -527,7 +527,7 @@ In particular,
  and did not affect the ability of robots to execute time-sensitive navigation tasks.
 
 Overall, 
- these findings demonstrate that HarmoniKt can successfully abstract heterogeneous robotic platforms 
+ these findings demonstrate that \approach{} can successfully abstract heterogeneous robotic platforms 
  in a realistic Industry 4.0 environment while preserving low latency and practical responsiveness. 
 
 \section{Opportunities and Challenges}\label{sec:impact}
@@ -634,7 +634,7 @@ These additions will not only enhance the platform's capabilities
 Furthermore, the unified API creates opportunities for integrating LLM-based natural language interfaces, 
  lowering the barrier for human-fleet interaction.
 
-By releasing HarmoniKt as open source, 
+By releasing \approach{} as open source, 
  we aim to foster collaboration between academia and industry, 
  providing both a practical tool and a research testbed 
  to advance interoperable and scalable robotics in Industry 4.0.
